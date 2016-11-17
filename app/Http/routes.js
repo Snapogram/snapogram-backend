@@ -18,3 +18,8 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+Route.post('/images', 'ImageController.create')
+Route.get('/images', 'ImageController.index')
+Route.put('/images/:id', 'ImageController.update')
+Route.delete('/images/:id', 'ImageController.delete')
