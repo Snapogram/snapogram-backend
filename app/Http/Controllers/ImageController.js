@@ -18,6 +18,14 @@ class ImageController {
     response.json(imageList)
   }
 
+//show a single image 
+  * details (request, response) {
+    let id = request.param('id')
+    let image = yield Image.findBy('id', id)
+
+    response.status(202).json(image)
+  }
+
   * update (request, response) {
     let id = request.param('id')
     let image = yield Image.findBy('id', id)

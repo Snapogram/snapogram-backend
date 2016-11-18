@@ -21,5 +21,6 @@ Route.on('/').render('welcome')
 
 Route.post('/images', 'ImageController.create')
 Route.get('/images', 'ImageController.index')
+Route.get('/images/:id', 'ImageController.details')
 Route.put('/images/:id', 'ImageController.update')
 Route.delete('/images/:id', 'ImageController.delete')
