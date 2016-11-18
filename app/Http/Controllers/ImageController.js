@@ -21,23 +21,29 @@ class ImageController {
   * update (request, response) {
     let id = request.param('id')
     let image = yield Image.findBy('id', id)
-    let update = request.only('caption', 'url', 'description')
+    let update = request.only('caption', 'url', 'description', 'likes')
 
-    image.fill(update)
-    yield image.save()
-    response.status(202).json(image)
+    if (image) {
+      image.fill(update)
+      yield image.save()
+      response.status(202).json(image)
+    }
+    else {
+      response.status(404).json({ error: "Image not found." })
+    }
   }
-
-  // * update (request, response) {
-  //
-  // }
 
   * delete (request, response) {
   let id = request.param('id')
-
   let image = yield Image.findBy('id', id)
-  yield image.delete()
-  response.status(202).json({ success: "Image successfully deleted" })
+
+  if (image) {
+    yield image.delete()
+    response.status(202).json({ success: "Image successfully deleted" })
+  }
+  else {
+    response.status(404).json({ error: "Image not found." })
+  }
   }
 }
 
