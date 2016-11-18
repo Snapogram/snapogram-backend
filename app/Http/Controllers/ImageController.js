@@ -6,6 +6,8 @@ class ImageController {
   * create (request, response) {
     let newData = request.only('caption', 'url', 'description')
 
+    newData.likes = 0;
+
     let newImage = yield Image.create(newData)
     response.status(201).json(newImage)
   }
