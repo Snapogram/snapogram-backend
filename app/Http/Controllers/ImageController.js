@@ -13,12 +13,12 @@ class ImageController {
   }
 
   * index (request, response) {
-    let imageList = yield Image.query().select("*")
+    let imageList = yield Image.query().select("*").orderBy('created_at', desc)
 
     response.json(imageList)
   }
 
-//show a single image 
+//show a single image
   * details (request, response) {
     let id = request.param('id')
     let image = yield Image.findBy('id', id)
